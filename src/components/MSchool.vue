@@ -1,20 +1,14 @@
 <template>
-  <div class="row">
+  <div>
     <template v-if="!isLoading">
-      <div
-        class="relative"
-        @mouseenter="(e) => showToolTip(e, true)"
-        @mouseleave="(e) => showToolTip(e, false)"
-        @mousemove="moveToolTip">
-        <div class="school-logo">
-          <img
-            :src="require(`../assets/${schoolData.logo}`)"
-            alt="Avatar">
+      <div class="relative">
+        <div 
+          class="school-logo" 
+          @click="(e) => sendEvent(e, 'mouse-click')">
+          <img 
+            :src="require(`../assets/${schoolData.logo}`)" 
+            :alt="schoolData.schools">
         </div>
-        <div
-          v-if="bshowToolTip"
-          :style="tooltipPosition"
-          class="tooltip" />
       </div>
     </template>
     <template v-else>
@@ -39,26 +33,16 @@ export default {
     }
   },
   data() {
-    return {
-      bshowToolTip: false,
-      tooltipPosition: {
-        left: '0px',
-        top: '0px',
-      }
-    }
+    return {}
   },
   methods: {
-    showToolTip(event, state){
-      this.bshowToolTip = state;
-      this.tooltipPosition.left = `${event.layerX}px`;
-      this.tooltipPosition.top = `${event.layerY}px`;
+    sendEvent(event, state) {
+      this.$emit('showSchoolInfo', {
+        event: event,
+        state: state,
+        selectedSchool: this.schoolData
+      })
     },
-    moveToolTip(event){
-      if(this.bshowToolTip){
-        this.tooltipPosition.left = `${event.layerX}px`;
-        this.tooltipPosition.top = `${event.layerY}px`;
-      }
-    }
   },
 }
 </script>
@@ -67,37 +51,40 @@ export default {
 <style lang="scss" scoped>
 @import '~@/styles/variables';
 
-.school-logo{
-  width: 200px;
-  height: 200px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 2px 2px 5px;
-  padding: 10px;
-  // border: 1px black solid;
-  img {
-   display: inline;
-     margin: 0 auto;
-     height: 100%;
-     width: auto;
-   }
+.school-logo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    // border: 1px black solid;
+    &:hover {
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+    img {
+        display: inline;
+        margin: 0 auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 200px;
+    }
 }
 .relative {
-  position: relative;
-  margin: auto;
+    position: relative;
+    margin: auto;
 }
 .tooltip {
-  position: absolute;
-  border: 1px solid black;
-  background-color: red;
-  margin: 20px;
-  z-index: 10;
-  height: 20vw;
-  width: 20vw;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-  transform:translateX(-10vw);
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    margin: 0 20px;
+    z-index: 10;
+    width: 50vw;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
-
-
+.text-tooltip {
+    font-size: 1.0rem;
+    padding: 0.3rem;
+}
 </style>

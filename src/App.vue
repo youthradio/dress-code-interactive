@@ -3,12 +3,7 @@
     <MHeader />
     <div class="row-column">
       <div class="flex-row">
-        <MSchool
-          v-for="school in schoolsData"
-          :school-data="school"
-          :key="school.schools"
-          class="pp"
-        />
+        <MSchoolsHeader class="margin"/>
       </div>
     </div>
   </div>
@@ -16,7 +11,7 @@
 
 <script>
 import MainComponent from './components/MainComponent.vue'
-import MSchool from './components/MSchool.vue'
+import MSchoolsHeader from './components/MSchoolsHeader.vue'
 import MHeader from './components/MHeader.vue'
 
 import ResizeObserver from 'resize-observer-polyfill';
@@ -25,16 +20,14 @@ export default {
   name: 'App',
   components: {
     MainComponent,
-    MSchool,
+    MSchoolsHeader,
     MHeader
   },
   data() {
     return {}
   },
   computed: {
-    schoolsData() {
-      return this.$store.state.schoolsData;
-    },
+
   },
   created() {
     // load data
@@ -61,13 +54,22 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/custom";
+@import "~@/styles/custom";
+@import '~@/styles/mixins';
 
 .flex-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.pp {
-  margin: 50px;
+
+.margin {
+  width: 100%;
+  @include breakpoint("small"){
+    max-width: 70%;
+  }
+  @include breakpoint("large"){
+    max-width: 50%;
+  }
 }
 </style>

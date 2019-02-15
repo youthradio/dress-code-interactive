@@ -8,6 +8,9 @@ export default {
     isLoading() {
       return this.$store.state.isLoading;
     },
+    schoolsData() {
+      return this.$store.state.schoolsData;
+    },
   },
   methods: {
     debouceEvent(event, callback) {
