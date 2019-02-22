@@ -1,43 +1,48 @@
 <template>
   <div class="flex-row">
-    <div class="flex-no-wrap">
-      <MSchool
-        v-for="school in schoolsData.slice(0, 4)"
-        :school-data="school"
-        :key="school.schools"
-        class="logo"
-        @showSchoolInfo="showSchoolInfo"
-      />
-    </div>
-    <div
-      ref="schoolInfoBox"
-      :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
-    >
-      <div 
-        v-if="!bshowSchoolInfo" 
-        class="welcome-message">
-        <h3>
-          We reviewed dress codes from 8 schools across the United States.
-        </h3>
+    <template v-if="!isLoading">
+      <div class="flex-no-wrap">
+        <MSchool
+          v-for="school in schoolsData.slice(0, 4)"
+          :school-data="school"
+          :key="school.schools"
+          class="logo"
+          @showSchoolInfo="showSchoolInfo"
+        />
       </div>
-      <div 
-        v-else 
-        class="school-dress-code">
-        <h3>{{ selectedSchool.schools }}</h3>
-        <p>
-          {{ selectedSchool.dress_code_text }}
-        </p>
+      <div
+        ref="schoolInfoBox"
+        :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
+      >
+        <div
+          v-if="!bshowSchoolInfo"
+          class="welcome-message">
+          <h3>
+            We reviewed dress codes from 8 schools across the United States.
+          </h3>
+        </div>
+        <div
+          v-else
+          class="school-dress-code">
+          <h3>{{ selectedSchool.schools }}</h3>
+          <p>
+            {{ selectedSchool.dress_code_text }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="flex-no-wrap">
-      <MSchool
-        v-for="school in schoolsData.slice(4)"
-        :school-data="school"
-        :key="school.schools"
-        class="logo"
-        @showSchoolInfo="showSchoolInfo"
-      />
-    </div>
+      <div class="flex-no-wrap">
+        <MSchool
+          v-for="school in schoolsData.slice(4)"
+          :school-data="school"
+          :key="school.schools"
+          class="logo"
+          @showSchoolInfo="showSchoolInfo"
+        />
+      </div>
+    </template>
+    <template v-else>
+      Loading...
+    </template>
   </div>
 </template>
 

@@ -23,6 +23,13 @@ const mutations = {
       .then(res => csvParse(res))
       .then(data => {
         delete data.columns;
+        return data.sort(() => 0.5 - Math.random());
+        })
+    state.outfitsData  = await fetch('outfits.csv')
+      .then(res => res.text())
+      .then(res => csvParse(res))
+      .then(data => {
+        delete data.columns;
         return data;
         })
     state.isLoading = false;

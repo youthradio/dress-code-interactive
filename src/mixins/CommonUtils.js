@@ -11,6 +11,9 @@ export default {
     schoolsData() {
       return this.$store.state.schoolsData;
     },
+    outfitsData() {
+      return this.$store.state.outfitsData;
+    },
   },
   methods: {
     debouceEvent(event, callback) {

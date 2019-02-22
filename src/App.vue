@@ -5,6 +5,7 @@
       <div class="flex-row">
         <MSchoolsHeader class="margin"/>
       </div>
+      <MOutfits />
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
 import MainComponent from './components/MainComponent.vue'
 import MSchoolsHeader from './components/MSchoolsHeader.vue'
 import MHeader from './components/MHeader.vue'
+import MOutfits from './components/MOutfits.vue'
 
 import ResizeObserver from 'resize-observer-polyfill';
 
@@ -21,7 +23,8 @@ export default {
   components: {
     MainComponent,
     MSchoolsHeader,
-    MHeader
+    MHeader,
+    MOutfits
   },
   data() {
     return {}
