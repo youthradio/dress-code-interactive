@@ -2,11 +2,11 @@
   <div>
     <template v-if="!isLoading">
       <div class="relative">
-        <div 
-          class="school-logo" 
+        <div
+          class="school-logo"
           @click="(e) => sendEvent(e, 'mouse-click')">
-          <img 
-            :src="require(`../assets/${schoolData.logo}`)" 
+          <img
+            :src="require(`../assets/${schoolData.logo}`)"
             :alt="schoolData.schools">
         </div>
       </div>
@@ -64,10 +64,10 @@ export default {
     }
     img {
         display: inline;
-        margin: 0 auto;
+        margin: auto;
         height: auto;
-        max-width: 100%;
-        max-height: 200px;
+        width: 100%;
+        max-height: auto;
     }
 }
 .relative {
@@ -80,7 +80,7 @@ export default {
     background-color: white;
     margin: 0 20px;
     z-index: 10;
-    width: 50vw;
+    width: 100%;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 .text-tooltip {

@@ -1,32 +1,18 @@
 <template>
   <div>
     <template v-if="!isLoading">
-      <div class="grid-wrap">
-        <MSchool
-          v-for="school in schoolsData"
-          :school-data="school"
-          :key="school.schools"
-          @showSchoolInfo="showSchoolInfo"
-        />
-      </div>
-      <div
-        ref="schoolInfoBox"
-        :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
-      >
-        <div
-          v-if="!bshowSchoolInfo"
-          class="welcome-message">
-          <h2>
-            We reviewed dress codes from 8 schools across the United States.
-          </h2>
+      <div 
+        v-for="school in schoolsData" 
+        class="list">
+        <div class="school-logo">
+          <MSchool
+            :school-data="school"
+            :key="school.schools"
+            @showSchoolInfo="showSchoolInfo"
+          />
         </div>
-        <div
-          v-else
-          class="school-dress-code">
-          <h3>{{ selectedSchool.schools }}</h3>
-          <p>
-            {{ selectedSchool.dress_code_text }}
-          </p>
+        <div>
+          <h4>{{ school.schools }}</h4>
         </div>
       </div>
     </template>
@@ -41,7 +27,7 @@ import CommonUtils from "../mixins/CommonUtils";
 import MSchool from "./MSchool.vue";
 
 export default {
-  name: "MSchoolsHeader",
+  name: "MSchoolsResult",
   components: {
     MSchool
   },
@@ -50,6 +36,7 @@ export default {
     return {
       bshowSchoolInfo: false,
       selectedSchool: null,
+      hasVoted: false
     };
   },
   methods: {
@@ -58,7 +45,7 @@ export default {
         this.bshowSchoolInfo = true;
         this.selectedSchool = e.selectedSchool;
         this.$refs.schoolInfoBox.scrollTo(0, 0);
-        this.$refs.schoolInfoBox.scrollIntoView({  behavior: 'smooth'})
+        this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
       }
     }
   }
@@ -70,11 +57,13 @@ export default {
 @import "~@/styles/variables";
 @import "~@/styles/mixins";
 
-.grid-wrap {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 3%;
-  margin: 0 3% 0 3%;
+.list {
+  display: flex;
+}
+
+.school-logo{
+  padding: 10px;
+  max-width: 80px;
 }
 
 .middle {

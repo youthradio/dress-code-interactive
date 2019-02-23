@@ -1,11 +1,12 @@
 <template>
   <div>
     <MHeader />
-    <div class="row-column">
-      <div class="flex-row">
-        <MSchoolsHeader class="margin"/>
+    <div class="row-column ">
+      <MSchoolsHeader style="width:50%;"/>
+      <div class="grid-row">
+        <MOutfits class="order"/>
+        <MSchoolsResult />
       </div>
-      <MOutfits />
     </div>
   </div>
 </template>
@@ -15,6 +16,7 @@ import MainComponent from './components/MainComponent.vue'
 import MSchoolsHeader from './components/MSchoolsHeader.vue'
 import MHeader from './components/MHeader.vue'
 import MOutfits from './components/MOutfits.vue'
+import MSchoolsResult from './components/MSchoolsResult.vue'
 
 import ResizeObserver from 'resize-observer-polyfill';
 
@@ -24,7 +26,8 @@ export default {
     MainComponent,
     MSchoolsHeader,
     MHeader,
-    MOutfits
+    MOutfits,
+    MSchoolsResult
   },
   data() {
     return {}
@@ -60,11 +63,12 @@ export default {
 @import "~@/styles/custom";
 @import '~@/styles/mixins';
 
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
+  grid-auto-flow: dense;
 }
+
 
 .margin {
   width: 100%;
