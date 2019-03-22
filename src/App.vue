@@ -1,11 +1,18 @@
 <template>
   <div>
     <MHeader />
-    <div class="row-column ">
-      <MSchoolsHeader style="width:50%;"/>
-      <div class="grid-row">
-        <MOutfits class="order"/>
-        <MSchoolsResult />
+    <div class="row-flex-column ">
+      <MSchoolsHeader class="schools-header"/>
+      <MOutfits class="order"/>
+      <MSchoolsResult v-if="hasVoted"/>
+      <div class="row-flex-column">
+        <div class="message">
+          <h2> Do you think the student will get dress coded? </h2>
+        </div>
+        <div class="row-flex center">
+          <button class="button-style"> Yes </button>
+          <button class="button-style"> No </button>
+        </div>
       </div>
     </div>
   </div>
@@ -17,7 +24,6 @@ import MSchoolsHeader from './components/MSchoolsHeader.vue'
 import MHeader from './components/MHeader.vue'
 import MOutfits from './components/MOutfits.vue'
 import MSchoolsResult from './components/MSchoolsResult.vue'
-
 import ResizeObserver from 'resize-observer-polyfill';
 
 export default {
@@ -30,7 +36,9 @@ export default {
     MSchoolsResult
   },
   data() {
-    return {}
+    return {
+      hasVoted: false,
+    }
   },
   computed: {
 
@@ -69,7 +77,19 @@ export default {
   grid-auto-flow: dense;
 }
 
+.center {
+  justify-content: center;
+}
+.schools-header{
+  // margin: auto;
+  @include breakpoint("small"){
+    max-width: 100%;
+  }
+  @include breakpoint("large"){
+    max-width: 50%;
+  }
 
+}
 .margin {
   width: 100%;
   @include breakpoint("small"){
@@ -78,5 +98,28 @@ export default {
   @include breakpoint("large"){
     max-width: 50%;
   }
+}
+.button-style {
+  text-transform: uppercase;
+  background-color: $white;
+  border: 3px solid $dark;
+  border-radius: 10px;
+  padding: .5rem .5rem;
+  font-size: 1.5rem !important;
+  font-family: 'Assistant', sans-serif;
+	font-weight: 600;
+  box-shadow: 0.3rem 0.3rem $sky-blue;
+  margin: 0.6rem;
+}
+
+.button-style:hover {
+  color: #fff;
+  background-color: $sky-blue;
+  box-shadow: 4px 4px $dark;
+}
+.button-style:active {
+  color: #fff;
+  background-color: $sky-blue;
+  box-shadow: 2px 2px $dark;
 }
 </style>

@@ -7,6 +7,9 @@
           ref="slider"
           :per-view="3"
           :bound="true"
+          :drag-threshold="120"
+          :animation-duration="200"
+          :swipe-threshold="120"
           v-model="activeOutfit"
           focus-at="center"
           type="carousel"
@@ -82,28 +85,24 @@ export default {
   data() {
     return {
       glide: undefined,
-      activeOutfit: 1
+      activeOutfit: 1,
     };
+  },
+  watch:{
+    activeOutfit(){
+      this.$root.$emit('activeOutfit', {
+        index: this.activeOutfit
+      })
+    }
   },
   mounted() {},
   methods: {
-    indexChanged(event) {
-      console.log(event.displayIndex);
-      this.activeOutfit = event.displayIndex;
-    },
     nextTopic() {
       this.$refs.slider.go(">");
     },
     prevTopic() {
       this.$refs.slider.go("<");
     },
-    sendEvent(event, state) {
-      this.$emit("showSchoolInfo", {
-        event: event,
-        state: state,
-        selectedSchool: this.schoolData
-      });
-    }
   }
 };
 </script>
@@ -120,7 +119,8 @@ export default {
   display: flex;
   align-items: center;
   position: absolute;
-  padding-left: 1%;
+  padding-left: 2%;
+  padding-right: 20%;
   top: 0;
   left: 0;
   height: 100%;
@@ -129,7 +129,8 @@ export default {
   display: flex;
   align-items: center;
   position: absolute;
-  padding-right: 1%;
+  padding-left: 20%;
+  padding-right: 2%;
   top: 0;
   right: 0;
   height: 100%;

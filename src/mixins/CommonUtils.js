@@ -13,9 +13,12 @@ export default {
     },
     outfitsData() {
       return this.$store.state.outfitsData;
-    },
+    }
   },
   methods: {
+    getSelectedOutfit(index){
+      return this.outfitsData[index];
+    },
     debouceEvent(event, callback) {
       if(this._mixingDebouceTimer){
         window.cancelAnimationFrame(this._mixingDebouceTimer);

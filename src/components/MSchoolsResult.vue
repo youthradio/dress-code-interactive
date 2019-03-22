@@ -1,8 +1,8 @@
 <template>
   <div>
     <template v-if="!isLoading">
-      <div 
-        v-for="school in schoolsData" 
+      <div
+        v-for="school in schoolsData"
         class="list">
         <div class="school-logo">
           <MSchool
@@ -11,8 +11,11 @@
             @showSchoolInfo="showSchoolInfo"
           />
         </div>
-        <div>
+        <div class="school-result">
           <h4>{{ school.schools }}</h4>
+          <p style="font-size:12px">
+            {{ getSelectedOutfit(indexActiveOutfit)[school.schools] }}
+          </p>
         </div>
       </div>
     </template>
@@ -36,16 +39,23 @@ export default {
     return {
       bshowSchoolInfo: false,
       selectedSchool: null,
-      hasVoted: false
+      hasVoted: false,
+      indexActiveOutfit: 1,
     };
+  },
+  mounted() {
+    //do something after mounting vue instance
+    this.$root.$on('activeOutfit',({index}) => this.indexActiveOutfit = index)
   },
   methods: {
     showSchoolInfo(e) {
       if (e.state === "mouse-click") {
-        this.bshowSchoolInfo = true;
-        this.selectedSchool = e.selectedSchool;
-        this.$refs.schoolInfoBox.scrollTo(0, 0);
-        this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
+        console.log(e)
+
+      //   this.bshowSchoolInfo = true;
+      //   this.selectedSchool = e.selectedSchool;
+      //   this.$refs.schoolInfoBox.scrollTo(0, 0);
+      //   this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
       }
     }
   }
@@ -64,8 +74,12 @@ export default {
 .school-logo{
   padding: 10px;
   max-width: 80px;
+  width: 50%;
 }
+.school-result{
+ flex-grow: 3;
 
+}
 .middle {
   display: flex;
   justify-content: center;
@@ -74,15 +88,6 @@ export default {
   padding: 20px;
   max-height: 30vh;
   height: auto;
-}
-
-.welcome-message {
-  text-align: center;
-  max-width: 100%;
-  align-self: center;
-  @include breakpoint("small") {
-    max-width: 50%;
-  }
 }
 .info-box {
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);

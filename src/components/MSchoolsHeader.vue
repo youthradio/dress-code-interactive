@@ -15,7 +15,7 @@
       >
         <div
           v-if="!bshowSchoolInfo"
-          class="welcome-message">
+          class="message">
           <h2>
             We reviewed dress codes from 8 schools across the United States.
           </h2>
@@ -85,15 +85,6 @@ export default {
   padding: 20px;
   max-height: 30vh;
   height: auto;
-}
-
-.welcome-message {
-  text-align: center;
-  max-width: 100%;
-  align-self: center;
-  @include breakpoint("small") {
-    max-width: 50%;
-  }
 }
 .info-box {
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
