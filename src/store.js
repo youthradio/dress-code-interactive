@@ -6,7 +6,7 @@ Vue.use(Vuex);
 const state = {
   isLoading: false,
   schoolsData: null,
-  outfitsData: null
+  reviewsData: null
 };
 const actions = {
   fetchData({ commit }) {
@@ -16,7 +16,7 @@ const actions = {
 const mutations = {
   async INTERACTIVE_DATA(state) {
     state.isLoading = true;
-    [state.schoolsData, state.outfitsData] = await Promise.all([
+    [state.schoolsData, state.reviewsData] = await Promise.all([
       fetch("schools.csv")
         .then(res => res.text())
         .then(res => csvParse(res))
@@ -26,7 +26,22 @@ const mutations = {
         }),
       fetch("outfits.csv")
         .then(res => res.text())
-        .then(res => csvParse(res))
+        .then(res =>
+          csvParse(res, row => {
+            const out = {
+              outfit: {},
+              schools: {}
+            };
+            for (let key in row) {
+              if (key.includes("outfit")) {
+                out["outfit"][key] = row[key];
+              } else {
+                out["schools"][key] = row[key]  ;
+              }
+            }
+            return out;
+          })
+        )
         .then(data => {
           delete data.columns;
           return data;

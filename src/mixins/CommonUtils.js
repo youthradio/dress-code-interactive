@@ -11,14 +11,11 @@ export default {
     schoolsData() {
       return this.$store.state.schoolsData;
     },
-    outfitsData() {
-      return this.$store.state.outfitsData;
+    reviewsData() {
+      return this.$store.state.reviewsData;
     }
   },
   methods: {
-    getSelectedOutfit(index){
-      return this.outfitsData[index];
-    },
     debouceEvent(event, callback) {
       if(this._mixingDebouceTimer){
         window.cancelAnimationFrame(this._mixingDebouceTimer);
