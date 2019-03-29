@@ -76,19 +76,17 @@ html {
 }
 /* Document level adjustments */
 html {
-  font-size: 17px;
-}
-@media (max-width: 992px) {
-  html {
+  font-size: 12px;
+  @include breakpoint("small") {
+    font-size: 13px;
+  }
+  @include breakpoint("medium") {
     font-size: 15px;
   }
-}
-@media (max-width: 576px) {
-  html {
-    font-size: 12px;
+  @include breakpoint("large") {
+    font-size: 18px;
   }
 }
-
 h1 {
   font-size: 2rem;
 }

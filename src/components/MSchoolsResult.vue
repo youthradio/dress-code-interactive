@@ -1,8 +1,8 @@
 <template>
   <div>
     <template v-if="!isLoading">
-      <div class="row-flex m-1">
-        <section>
+      <div class="container m-1">
+        <header>
           <h2>
             <template v-if="voteOption"
               >You're right</template
@@ -12,6 +12,8 @@
             >
             according to:
           </h2>
+        </header>
+        <section>
           <ul>
             <li v-for="school in schoolsFail">
               <div class="school-result">
@@ -31,7 +33,7 @@
             </li>
           </ul>
         </section>
-        <section>
+        <header>
           <h2>
             <template v-if="!voteOption"
               >You're right</template
@@ -41,6 +43,8 @@
             >
             according to:
           </h2>
+        </header>
+        <section>
           <ul>
             <li v-for="school in schoolsPass">
               <div class="school-result">
@@ -155,5 +159,15 @@ export default {
 }
 .school-logo-max {
   max-width: 100px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+section {
+  grid-row: 2;
+}
+header {
+  grid-row: 1;
 }
 </style>
