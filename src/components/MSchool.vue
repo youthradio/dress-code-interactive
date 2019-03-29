@@ -7,7 +7,7 @@
           @click="(e) => sendEvent(e, 'mouse-click')">
           <img
             :src="require(`../assets/${schoolData.logo}`)"
-            :alt="schoolData.schools">
+            :alt="schoolData.school_name">
         </div>
       </div>
     </template>
@@ -56,7 +56,7 @@ export default {
     overflow: hidden;
     border-radius: 50%;
     box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    // padding: 10px;
     // border: 1px black solid;
     &:hover {
         box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -72,7 +72,8 @@ export default {
 }
 .relative {
     position: relative;
-    margin: auto;
+    margin: 5px;
+    padding: 5px;
 }
 .tooltip {
     position: absolute;

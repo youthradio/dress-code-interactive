@@ -1,29 +1,25 @@
 <template>
   <div>
     <template v-if="!isLoading">
-      <div class="grid-wrap">
-        <MSchool
-          v-for="school in schoolsData"
-          :school-data="school"
-          :key="school.schools"
-          @showSchoolInfo="showSchoolInfo"
-        />
-      </div>
+      <section>
+        <h4>
+          We reviewed dress codes from 8 schools across the United States.
+        </h4>
+        <div class="grid-wrap">
+          <MSchool
+            v-for="school in schoolsData"
+            :school-data="school"
+            :key="school.schools"
+            @showSchoolInfo="showSchoolInfo"
+          />
+        </div>
+      </section>
       <div
         ref="schoolInfoBox"
         :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
       >
-        <div
-          v-if="!bshowSchoolInfo"
-          class="message">
-          <h2>
-            We reviewed dress codes from 8 schools across the United States.
-          </h2>
-        </div>
-        <div
-          v-else
-          class="school-dress-code">
-          <h3>{{ selectedSchool.schools }}</h3>
+        <div v-if="bshowSchoolInfo" class="school-dress-code">
+          <h3>{{ selectedSchool.school_name }}</h3>
           <p>
             {{ selectedSchool.dress_code_text }}
           </p>
@@ -49,7 +45,7 @@ export default {
   data() {
     return {
       bshowSchoolInfo: false,
-      selectedSchool: null,
+      selectedSchool: null
     };
   },
   methods: {
@@ -58,7 +54,7 @@ export default {
         this.bshowSchoolInfo = true;
         this.selectedSchool = e.selectedSchool;
         this.$refs.schoolInfoBox.scrollTo(0, 0);
-        this.$refs.schoolInfoBox.scrollIntoView({  behavior: 'smooth'})
+        this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
       }
     }
   }
@@ -70,11 +66,13 @@ export default {
 @import "~@/styles/variables";
 @import "~@/styles/mixins";
 
+h4 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 .grid-wrap {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 3%;
-  margin: 0 3% 0 3%;
 }
 
 .middle {

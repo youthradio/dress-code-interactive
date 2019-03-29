@@ -15,13 +15,13 @@
           type="carousel"
         >
           <vue-glide-slide
-            v-for="(outfit, ind) in outfitsData"
+            v-for="(review, ind) in reviewsData"
             :key="`slide-${-ind}`"
           >
             <div class="outfit-img">
               <img
                 :class="[activeOutfit === ind ? 'selected' : 'not-selected']"
-                :src="require(`../assets/${outfit.photo_path}`)"
+                :src="require(`../assets/${review.outfit.outfit_photo_path}`)"
               >
             </div>
           </vue-glide-slide>
@@ -145,7 +145,7 @@ export default {
 .outfit-img {
   display: flex;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   // border-radius: 50%;
   // box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 10px;

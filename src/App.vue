@@ -2,16 +2,24 @@
   <div>
     <MHeader />
     <div class="row-flex-column ">
-      <MSchoolsHeader class="schools-header" />
+      <MSchoolsHeader class="schools-header"/>
       <MOutfits class="order" />
-      <MSchoolsResult v-if="hasVoted" />
-      <div class="row-flex-column" v-else>
-        <div class="message">
-          <h2>Do you think the student will get dress coded?</h2>
-        </div>
+      <MSchoolsResult
+        v-if="hasVoted"
+        ref="resultbox"
+        :voteOption="voteOption"
+        :active-outfit="activeOutfit" />
+      <div
+        v-else
+        >
+        <h2>Do you think the student should get dress coded?</h2>
         <div class="row-flex center">
-          <button @click="vote('YES')" class="button-style">Yes</button>
-          <button @click="vote('NO')" class="button-style">No</button>
+          <button
+            class="button-style"
+            @click="vote(true)">Yes</button>
+          <button
+            class="button-style"
+            @click="vote(false)">No</button>
         </div>
       </div>
     </div>
@@ -37,7 +45,9 @@ export default {
   },
   data() {
     return {
-      hasVoted: false
+      hasVoted: false,
+      voteOption: null,
+      activeOutfit: 1,
     };
   },
   computed: {},
@@ -56,9 +66,16 @@ export default {
       }
     });
     resizeObserver.observe(elementRoot);
+    //clean has voted state with outfitchange
+    this.$root.$on('activeOutfit', this.resetView);
   },
   methods: {
+    resetView({index}){
+      this.hasVoted = false;
+      this.activeOutfit = index;
+    },
     vote(option) {
+      this.voteOption = option;
       this.hasVoted = true;
     }
   }
@@ -79,9 +96,10 @@ export default {
   justify-content: center;
 }
 .schools-header {
-  // margin: auto;
+  margin: auto;
+  max-width: 100%;
   @include breakpoint("small") {
-    max-width: 100%;
+    max-width: 60%;
   }
   @include breakpoint("large") {
     max-width: 50%;
@@ -89,12 +107,13 @@ export default {
 }
 .margin {
   width: 100%;
-  @include breakpoint("small") {
-    max-width: 70%;
-  }
-  @include breakpoint("large") {
-    max-width: 50%;
-  }
+  // max-width: 70%;
+  // @include breakpoint("small") {
+  //   max-width: 60%;
+  // }
+  // @include breakpoint("large") {
+  //   max-width: 50%;
+  // }
 }
 .button-style {
   text-transform: uppercase;
@@ -118,5 +137,8 @@ export default {
   color: #fff;
   background-color: $sky-blue;
   box-shadow: 2px 2px $dark;
+}
+h2{
+  text-align:center;
 }
 </style>
