@@ -1,4 +1,4 @@
-schools,type,level,location,logo,dress_code_url,schools_url,dress_code_text
+school_name,type,level,location,logo,dress_code_url,schools_url,dress_code_text
 Oakland Technical H.S,Public,High School,West Coast (Bay Area),logos/oaklandtech.jpg,https://oaklandtech.com/staff/student-behavior/,https://oaklandtech.com/,"""Dress Code
 In order to prepare students for the demands of a professional or working environment, we hold everyone to the following expectations:
 
