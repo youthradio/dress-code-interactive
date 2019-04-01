@@ -1,27 +1,31 @@
 <template>
   <div>
     <MHeader />
-    <div class="row-flex-column ">
-      <MSchoolsHeader class="schools-header"/>
+    <div class="row-flex-column">
+      <MSchoolsHeader class="schools-header" />
       <MOutfits class="order" />
       <MSchoolsResult
         v-if="hasVoted"
         ref="resultbox"
-        :voteOption="voteOption"
-        :active-outfit="activeOutfit" />
-      <div
-        v-else
-        >
-        <h2>Do you think the student should get dress coded?</h2>
-        <div class="row-flex center">
-          <button
-            class="button-style"
-            @click="vote(true)">Yes</button>
-          <button
-            class="button-style"
-            @click="vote(false)">No</button>
+        :vote-option="voteOption"
+        :active-outfit="activeOutfit"
+      />
+      <transition 
+        name="fade" 
+        enter-class="disable-scroll" 
+        leave-class="disable-scroll">
+        <div v-if="!hasVoted">
+          <h2>Do you think the student should get dress coded?</h2>
+          <div class="row-flex center">
+            <button 
+              class="button-style" 
+              @click="vote(true)">Yes</button>
+            <button 
+              class="button-style" 
+              @click="vote(false)">No</button>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -47,7 +51,7 @@ export default {
     return {
       hasVoted: false,
       voteOption: null,
-      activeOutfit: 1,
+      activeOutfit: 1
     };
   },
   computed: {},
@@ -67,10 +71,10 @@ export default {
     });
     resizeObserver.observe(elementRoot);
     //clean has voted state with outfitchange
-    this.$root.$on('activeOutfit', this.resetView);
+    this.$root.$on("activeOutfit", this.resetView);
   },
   methods: {
-    resetView({index}){
+    resetView({ index }) {
       this.hasVoted = false;
       this.activeOutfit = index;
     },
@@ -138,7 +142,14 @@ export default {
   background-color: $sky-blue;
   box-shadow: 2px 2px $dark;
 }
-h2{
-  text-align:center;
+h2 {
+  text-align: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform: translateY(100%);
 }
 </style>
