@@ -4,23 +4,24 @@
       <div class="container m-1">
         <header>
           <h2>
-            <template v-if="voteOption"
-              >You're right</template
-            >
-            <template v-else
-              >You're wrong</template
-            >
+            <template v-if="voteOption">
+              You're <span class="right">right</span>
+            </template>
+            <template v-else>
+              You're wrong
+            </template>
             according to:
           </h2>
         </header>
         <section>
           <ul>
-            <li v-for="school in schoolsFail">
+            <li
+              v-for="school in schoolsFail"
+              :key="school.name">
               <div class="school-result">
                 <MSchool
-                  class="school-logo-max"
                   :school-data="school.info"
-                  :key="school.name"
+                  class="school-logo-max"
                   @showSchoolInfo="showSchoolInfo"
                 />
                 <div class="school-info">
@@ -35,23 +36,26 @@
         </section>
         <header>
           <h2>
-            <template v-if="!voteOption"
-              >You're right</template
+            <template
+              v-if="!voteOption"
+            >You're right</template
             >
-            <template v-else
-              >You're wrong</template
+            <template
+              v-else
+            >You're wrong</template
             >
             according to:
           </h2>
         </header>
         <section>
           <ul>
-            <li v-for="school in schoolsPass">
+            <li
+              v-for="school in schoolsPass"
+              :key="school.name">
               <div class="school-result">
                 <MSchool
-                  class="school-logo-max"
                   :school-data="school.info"
-                  :key="school.name"
+                  class="school-logo-max"
                   @showSchoolInfo="showSchoolInfo"
                 />
                 <div>
@@ -75,12 +79,15 @@
 <script>
 import CommonUtils from "../mixins/CommonUtils";
 import MSchool from "./MSchool.vue";
+import MTooltip from "./MTooltip.vue";
 
 export default {
   name: "MSchoolsResult",
   components: {
-    MSchool
+    MSchool,
+    MTooltip
   },
+  mixins: [CommonUtils],
   props: {
     activeOutfit: {
       type: Number,
@@ -93,19 +100,12 @@ export default {
       require: true
     }
   },
-  mixins: [CommonUtils],
   data() {
     return {
       bshowSchoolInfo: false,
       selectedSchool: null,
       hasVoted: false
     };
-  },
-  mounted() {
-    window.scrollTo({
-      behavior: "smooth",
-      top: this.$el.offsetTop - window.innerHeight / 2
-    });
   },
   computed: {
     getSchoolsData() {
@@ -130,10 +130,16 @@ export default {
         }));
     }
   },
+  mounted() {
+    window.scrollTo({
+      behavior: "smooth",
+      top: this.$el.offsetTop - window.innerHeight / 2
+    });
+  },
   methods: {
     showSchoolInfo(e) {
       if (e.state === "mouse-click") {
-        console.log(e);
+        // console.log(e);
 
         //   this.bshowSchoolInfo = true;
         //   this.selectedSchool = e.selectedSchool;
@@ -158,7 +164,7 @@ export default {
   align-items: center;
 }
 .school-logo-max {
-  max-width: 100px;
+  max-width: 90px;
 }
 .container {
   display: grid;

@@ -18,7 +18,9 @@
         ref="schoolInfoBox"
         :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
       >
-        <div v-if="bshowSchoolInfo" class="school-dress-code">
+        <div 
+          v-if="bshowSchoolInfo" 
+          class="school-dress-code">
           <h3>{{ selectedSchool.school_name }}</h3>
           <p>
             {{ selectedSchool.dress_code_text }}
