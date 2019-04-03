@@ -1,5 +1,22 @@
-outfit,outfit_photo_path,outfit_description,Oakland Technical H.S,Trinity,Booker T. Washington High School,Duval Charter School at Baymeadows,Riverdale High School,Seattle Preparatory School,Frontier Charter School,Denver School of the Arts
- ,outfits/outfit-1a.png,"Teen boy wearing baby blue baseball cap, navy blue hoodie with a lighter navycrew neck t shirt, slim fit black jeans and navy sneakers","Hoods, hats, etc. must leave eyes and ears visible
+outfits,outfit_photo_path,outfit_description,Oakland Technical H.S,Trinity,Booker T. Washington High School,Duval Charter School at Baymeadows,Riverdale High School,Seattle Preparatory School,Frontier Charter School,Denver School of the Arts
+ ,outfits/outfit-1a.png,"Teen boy wearing baby blue baseball cap, navy blue hoodie with a lighter navycrew neck t shirt, slim fit black jeans and navy sneakers","""In order to prepare students for the demands of a professional or working environment""
+
+""Hoods, hats, etc. must leave eyes and ears visible""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ",Students should refrain from wearing hats or visors.,"Headgear is prohibited and must be kept out of sight in the building. This includes, but is not limited to
 caps, hats, hoods, bandanas, wave caps, sweatbands, sunglasses, or any other head covering.","All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
@@ -24,22 +41,48 @@ Outfit 3,outfits/outfit-3a.png,"Teen girl with a curly black bob hairstyle and g
 logo.The polo shirt must be worn every day to school.Students in grades K-12 must wear CSUSA Khaki or Navy bottoms (shorts, slacks,
 skorts). Cargo pants, camouflage pants or other non-official uniform pants, skirts, or
 shorts cannot be worn...",pass,tight-fitting clothing,pass,pass
-Outfit 4,outfits/outfit-4a.png,"Gender nonconforming individual with teal hair,glasses, and  black half turtleneck sweater dress, with black sneakers",,pass,pass,"Hair must be neat and clean with no ""unnatural"" colors i.e. fluorescent, bright green,
-mohawks, spikes, head symbol shavings, etc. The decision about whether hair is appropriate
-will be at the administration’s discretion.
-All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
-logo. The polo shirt must be worn every day to school.Students in grades K-12 must wear CSUSA Khaki or Navy bottoms (shorts, slacks,
-skorts). Cargo pants, camouflage pants or other non-official uniform pants, skirts, or
-shorts cannot be worn.Limited jewelry
-can be worn such as a watch, small bracelet, and thin necklace/chain. For safety
-reasons, necklaces/chains should be worn inside of school uniform, NOT on top of the
-uniform shirt. ALL CLOTHING SHOULD BE LABELED WITH THE
-STUDENTS NAME.",pass,pass,pass,hair coloring
-Outfit 5,outfits/outfit-5a.png,"girl with box braids in a plain white polo,khaki pants, and black tennis shoes",pass,pass,pass,"All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
-logo.ALL CLOTHING SHOULD BE LABELED WITH THE
-STUDENTS NAME.",pass,pass,pass,pass
-Outfit 6,outfits/outfit-6a.png,"Boy in grey hoodie, with a black and red patterned belt, jeans torn at the knee and black and white sneakers",pass,pass,pass,"No hats, hoodies, head/sweat bands, tightlyfitted scarves, or bandanas may be worn.All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
-logo. Students in grades K-12 must wear CSUSA Khaki or Navy bottoms (shorts, slacks,
-skorts). Cargo pants, camouflage pants or other non-official uniform pants, skirts, or
-shorts cannot be worn.Absolutely no jeans will be allowed on any day (no matter the temperature)ALL CLOTHING SHOULD BE LABELED WITH THE
-STUDENTS NAME.",pass,Clothing should be free of holes or rips,pass,pass
+Outfit 4,outfits/outfit-4a.png,"Gender nonconforming individual with teal hair,glasses, and  black half turtleneck sweater dress, with black sneakers",pass,pass,"
+""JEWELRY OR ACCESSORIES THAT ARE CONSIDERED HEAVY AND/OR BULKY THAT COULD POSE A DANGER TO OTHERS IS NOT PERMITTED TO BE WORN AT SCHOOL.""","""Hair must be neat and clean with no ""unnatural"" colors i.e. fluorescent, bright green, mohawks, spikes, head symbol shavings, etc. The decision about whether hair is appropriate will be at the administration’s discretion.""
+
+""All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
+logo. The polo shirt must be worn every day to school.""
+
+""Students in grades K-12 must wear CSUSA Khaki or Navy bottoms (shorts, slacks, skorts).""
+
+""ALL CLOTHING SHOULD BE LABELED WITH THE STUDENTS NAME.""",pass,pass,"Maybe
+
+""Clothing that causes distractions or inhibits the learning process.""",pass
+Outfit 5,outfits/outfit-5a.png,"girl with box braids in a plain white polo,khaki pants, and black tennis shoes",pass,pass,pass,"""All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
+logo.""
+
+""ALL CLOTHING SHOULD BE LABELED WITH THE STUDENTS NAME.""",pass,pass,pass,pass
+Outfit 6,outfits/outfit-6a.png,"Boy in grey hoodie, with a black and red patterned belt, jeans torn at the knee and black and white sneakers","Maybe
+
+""In order to prepare students for the demands of a professional or working environment...""
+
+""No clothing or accessories may endorse gang activity""
+
+CL - Students wearing belts with certain colors have been known to be dress coded by administration based potential gang affliation.","Maybe
+
+""Clothing must be clean, tidy, and in good repair.""
+
+CL - Jeans with holes may be deemed as not in good repair","Maybe
+
+""There should be no rips or holes above mid-thigh.""
+
+CL - Holes may be close to mid-thigh.","""Hair must be neat and clean...""
+
+""No hats, hoodies, head/sweat bands, tightlyfitted scarves, or bandanas may be worn.""
+
+""All shirts must be tucked in and purchased from (All Uniform Wear) with the school’s
+logo.
+
+""Students in grades K-12 must wear CSUSA Khaki or Navy bottoms (shorts, slacks, skorts). Cargo pants, camouflage pants or other non-official uniform pants, skirts, or shorts cannot be worn.
+
+""Absolutely no jeans will be allowed on any day (no matter the temperature) 
+
+""ALL CLOTHING SHOULD BE LABELED WITH THE STUDENTS NAME.""","Maybe
+
+""Clothing must be clean and in good repair.""","""Clothing and personal grooming must be neat, clean and modest""
+
+""Clothing should be free of holes or rips, neat, and hemmed""",pass,pass

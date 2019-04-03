@@ -10,23 +10,9 @@
             v-for="school in schoolsData"
             :school-data="school"
             :key="school.schools"
-            @showSchoolInfo="showSchoolInfo"
           />
         </div>
       </section>
-      <div
-        ref="schoolInfoBox"
-        :class="['middle', bshowSchoolInfo ? 'info-box' : '']"
-      >
-        <div 
-          v-if="bshowSchoolInfo" 
-          class="school-dress-code">
-          <h3>{{ selectedSchool.school_name }}</h3>
-          <p>
-            {{ selectedSchool.dress_code_text }}
-          </p>
-        </div>
-      </div>
     </template>
     <template v-else>
       Loading...
@@ -46,20 +32,8 @@ export default {
   mixins: [CommonUtils],
   data() {
     return {
-      bshowSchoolInfo: false,
-      selectedSchool: null
     };
   },
-  methods: {
-    showSchoolInfo(e) {
-      if (e.state === "mouse-click") {
-        this.bshowSchoolInfo = true;
-        this.selectedSchool = e.selectedSchool;
-        this.$refs.schoolInfoBox.scrollTo(0, 0);
-        this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }
 };
 </script>
 

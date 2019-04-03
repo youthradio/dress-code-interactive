@@ -1,5 +1,10 @@
 <template>
   <div>
+    <MTooltip
+      v-if="bShowTooltip"
+      :tooltip-data="tooltipData"
+      @closeTooltip="closeTooltip"
+    />
     <template v-if="!isLoading">
       <div class="container m-1">
         <header>
@@ -17,18 +22,22 @@
           <ul>
             <li
               v-for="school in schoolsFail"
-              :key="school.name">
+              :key="school.name"
+              @click="showTooltip(school)"
+            >
               <div class="school-result">
                 <MSchool
                   :school-data="school.info"
                   class="school-logo-max"
-                  @showSchoolInfo="showSchoolInfo"
                 />
                 <div class="school-info">
                   <h4>{{ school.name }}</h4>
                   <h5>{{ school.info.level }}</h5>
                   <h5>{{ school.info.type }}</h5>
                   <h5>{{ school.info.location }}</h5>
+                  <span
+                    @mouseover="showTooltip(school)"
+                  >show result</span>
                 </div>
               </div>
             </li>
@@ -56,7 +65,6 @@
                 <MSchool
                   :school-data="school.info"
                   class="school-logo-max"
-                  @showSchoolInfo="showSchoolInfo"
                 />
                 <div>
                   <h4>{{ school.name }}</h4>
@@ -102,9 +110,8 @@ export default {
   },
   data() {
     return {
-      bshowSchoolInfo: false,
-      selectedSchool: null,
-      hasVoted: false
+      bShowTooltip: false,
+      selectedData: null
     };
   },
   computed: {
@@ -137,15 +144,12 @@ export default {
     });
   },
   methods: {
-    showSchoolInfo(e) {
-      if (e.state === "mouse-click") {
-        // console.log(e);
-
-        //   this.bshowSchoolInfo = true;
-        //   this.selectedSchool = e.selectedSchool;
-        //   this.$refs.schoolInfoBox.scrollTo(0, 0);
-        //   this.$refs.schoolInfoBox.scrollIntoView({ behavior: "smooth" });
-      }
+    closeTooltip(){
+      this.bShowTooltip = false;
+    },
+    showTooltip(s) {
+      this.bShowTooltip = true;
+      this.tooltipData = s;
     }
   }
 };
@@ -157,6 +161,7 @@ export default {
 @import "~@/styles/mixins";
 
 .school-result {
+  cursor: pointer;
   margin-top: 20px;
   margin-bottom: 20px;
   display: grid;

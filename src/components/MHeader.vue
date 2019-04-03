@@ -21,7 +21,9 @@
               </svg>
             </a>
           </div>
-          <button class="hamburger" @click="toggleMenu()">
+          <button
+            class="hamburger"
+            @click="toggleMenu()">
             <span />
             <span />
             <span />
@@ -29,14 +31,20 @@
           </button>
         </div>
         <div>
-          <a href="https://yr.media/join-us/" class="icon-join-us" />
-          <button class="icon-search" @click="toggleSeach()" />
+          <a
+            href="https://yr.media/join-us/"
+            class="icon-join-us" />
+          <button
+            class="icon-search"
+            @click="toggleSeach()" />
         </div>
       </div>
       <div :class="['search-container', searchContainer ? 'active' : '']">
         <div class="search-input">
           <form action="https://yr.media/search">
-            <input type="text" name="s" />
+            <input
+              type="text"
+              name="s" >
             <button>Go</button>
           </form>
         </div>
@@ -44,7 +52,9 @@
       </div>
     </header>
     <nav class="main-navigation">
-      <ul id="menu-main-menu" class="main-menu">
+      <ul
+        id="menu-main-menu"
+        class="main-menu">
         <li
           id="menu-item-35699"
           class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35699"
@@ -86,28 +96,42 @@
         <div>
           <ul class="social-menu">
             <li>
-              <a href="https://www.youtube.com/user/youthradio" target="_blank"
-                ><span class="icon-youtube"
+              <a
+                href="https://www.youtube.com/user/youthradio"
+                target="_blank"
+              ><span
+                class="icon-youtube"
               /></a>
             </li>
             <li>
-              <a href="https://www.facebook.com/yrmediapage" target="_blank"
-                ><span class="icon-facebook"
+              <a
+                href="https://www.facebook.com/yrmediapage"
+                target="_blank"
+              ><span
+                class="icon-facebook"
               /></a>
             </li>
             <li>
-              <a href="https://twitter.com/itsYRmedia" target="_blank"
-                ><span class="icon-twitter"
+              <a
+                href="https://twitter.com/itsYRmedia"
+                target="_blank"
+              ><span
+                class="icon-twitter"
               /></a>
             </li>
             <li>
-              <a href="https://www.instagram.com/yr.media" target="_blank"
-                ><span class="icon-instagram"
+              <a
+                href="https://www.instagram.com/yr.media"
+                target="_blank"
+              ><span
+                class="icon-instagram"
               /></a>
             </li>
           </ul>
 
-          <ul id="menu-media-categories-menu" class="media-menu">
+          <ul
+            id="menu-media-categories-menu"
+            class="media-menu">
             <li
               id="menu-item-36510"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36510"
@@ -130,12 +154,16 @@
               id="menu-item-38608"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38608"
             >
-              <a target="_blank" href="https://adp.fm/">ADP.FM Stream</a>
+              <a
+                target="_blank"
+                href="https://adp.fm/">ADP.FM Stream</a>
             </li>
           </ul>
         </div>
         <div>
-          <ul id="menu-footer-menu" class="pages-menu">
+          <ul
+            id="menu-footer-menu"
+            class="pages-menu">
             <li
               id="menu-item-38723"
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38723"
@@ -170,8 +198,9 @@
               id="menu-item-42578"
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42578"
             >
-              <a href="https://yr.media/career-opportunities/"
-                >Career Opportunities</a
+              <a
+                href="https://yr.media/career-opportunities/"
+              >Career Opportunities</a
               >
             </li>
             <li
@@ -203,19 +232,17 @@ export default {
   },
   computed: {},
   mounted() {
-    window.addEventListener(
-      "scroll",
+    window.addEventListener("scroll",
       event => this.debouceEvent(event, this.onScroll),
       false
     );
   },
   methods: {
     onScroll() {
-      if (!document.querySelectorAll(".disable-scroll").length) {
-        this.hideNavbar = window.scrollY > 83 ? true : false;
-        this.hideNavbar = window.scrollY > this.lastScrollY ? true : false;
-        this.lastScrollY = window.scrollY;
-      }
+      if(window.scrollY > 83 )
+      this.hideNavbar = window.scrollY > 83 ? true : false;
+      this.hideNavbar = window.scrollY > this.lastScrollY ? true : false;
+      this.lastScrollY = window.scrollY;
     },
     toggleMenu() {
       this.activeMenu = !this.activeMenu;

@@ -3,8 +3,7 @@
     <template v-if="!isLoading">
       <div class="relative">
         <div
-          class="school-logo"
-          @click="(e) => sendEvent(e, 'mouse-click')">
+          class="school-logo">
           <img
             :src="require(`../assets/${schoolData.logo}`)"
             :alt="schoolData.school_name">
@@ -34,15 +33,6 @@ export default {
   },
   data() {
     return {}
-  },
-  methods: {
-    sendEvent(event, state) {
-      this.$emit('showSchoolInfo', {
-        event: event,
-        state: state,
-        selectedSchool: this.schoolData
-      })
-    },
   },
 }
 </script>

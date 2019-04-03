@@ -4,28 +4,27 @@
     <div class="row-flex-column">
       <MSchoolsHeader class="schools-header" />
       <MOutfits class="order" />
-      <MSchoolsResult
-        v-if="hasVoted"
-        ref="resultbox"
-        :vote-option="voteOption"
-        :active-outfit="activeOutfit"
-      />
       <transition 
-        name="fade" 
-        enter-class="disable-scroll" 
-        leave-class="disable-scroll">
-        <div v-if="!hasVoted">
-          <h2>Do you think the student should get dress coded?</h2>
-          <div class="row-flex center">
-            <button 
-              class="button-style" 
-              @click="vote(true)">Yes</button>
-            <button 
-              class="button-style" 
-              @click="vote(false)">No</button>
-          </div>
-        </div>
+        v-if="hasVoted" 
+        name="fade">
+        <MSchoolsResult
+          v-if="hasVoted"
+          ref="resultbox"
+          :vote-option="voteOption"
+          :active-outfit="activeOutfit"
+        />
       </transition>
+      <div v-if="!hasVoted" >
+        <h2>Do you think the student should get dress coded?</h2>
+        <div class="row-flex center">
+          <button 
+            class="button-style" 
+            @click="vote(true)">Yes</button>
+          <button 
+            class="button-style" 
+            @click="vote(false)">No</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -146,10 +145,16 @@ h2 {
   text-align: center;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active {
+  transition: all 1.5s;
+}
+.fade-leave-active {
   transition: all 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter {
   transform: translateY(100%);
+}
+.fade-leave-to {
+  transform: translateY(200%);
 }
 </style>
