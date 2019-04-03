@@ -1,9 +1,12 @@
 <template>
-  <div 
-    class="tooltip" 
+  <div
+    class="tooltip"
     @click.prevent="$emit('closeTooltip')">
     <template v-if="!isLoading">
-      <section v-html="tooltipData.info.dress_code_html"/>
+      <section>
+        <h2>Dress Code</h2>
+        <div v-html="getHTMLHighlights" />
+      </section>
     </template>
     <template v-else>
       Loading...
@@ -27,9 +30,20 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    getHTMLHighlights() {
+      const html = this.tooltipData.info.dress_code_html;
+      const result = this.tooltipData.result // clean strings to match on regex
+        .replace(/\n/g, "")
+        .split("\"")
+        .filter(e => e)
+        .join("|");
+       const rg = new RegExp(result,"gi");
+      return html.replace(rg, "<span class=\"highlight\">$&</span>"); // find and replace with higlights
+    }
+  },
   mounted() {
-    document.querySelector("body").style.cssText =
-      "overflow: hidden;";
+    document.querySelector("body").style.cssText = "overflow: hidden;";
   },
   destroyed() {
     document.querySelector("body").style.cssText = "";
@@ -65,8 +79,20 @@ section {
   background-color: white;
   /deep/ ul {
     list-style: circle;
+    display: block;
+    list-style-type: disc;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
   }
-
+  /deep/ li {
+    display: list-item;
+  }
+  /deep/ .highlight {
+    font-weight: bolder;
+    background-color: rgba(255,255,0,0.8);
+  }
 }
-
 </style>

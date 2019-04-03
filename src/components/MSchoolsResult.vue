@@ -35,9 +35,9 @@
                   <h5>{{ school.info.level }}</h5>
                   <h5>{{ school.info.type }}</h5>
                   <h5>{{ school.info.location }}</h5>
-                  <span
+                  <h5><a
                     @mouseover="showTooltip(school)"
-                  >show result</span>
+                  >see dress code</a></h5>
                 </div>
               </div>
             </li>
@@ -180,5 +180,10 @@ section {
 }
 header {
   grid-row: 1;
+}
+a {
+  cursor: pointer;
+  color: $sky-blue;
+  text-decoration: underline;
 }
 </style>
