@@ -60,7 +60,8 @@
           <ul>
             <li
               v-for="school in schoolsPass"
-              :key="school.name">
+              :key="school.name"
+              @click="showTooltip(school)">
               <div class="school-result">
                 <MSchool
                   :school-data="school.info"
@@ -71,6 +72,9 @@
                   <h5>{{ school.info.level }}</h5>
                   <h5>{{ school.info.type }}</h5>
                   <h5>{{ school.info.location }}</h5>
+                  <h5><a
+                    @mouseover="showTooltip(school)"
+                  >see dress code</a></h5>
                 </div>
               </div>
             </li>
@@ -140,7 +144,7 @@ export default {
   mounted() {
     window.scrollTo({
       behavior: "smooth",
-      top: this.$el.offsetTop - window.innerHeight / 2
+      top: this.$el.offsetTop - window.innerHeight / 3
     });
   },
   methods: {

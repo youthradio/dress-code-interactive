@@ -1,11 +1,20 @@
 <template>
   <div>
-    <MHeader />
     <div class="row-flex-column">
-      <MSchoolsHeader class="schools-header" />
+      <h2>Do you think the student should get dress coded?</h2>
       <MOutfits class="order" />
-      <transition 
-        v-if="hasVoted" 
+      <div v-if="!hasVoted" >
+        <div class="row-flex center">
+          <button
+            class="button-style"
+            @click="vote(true)">Yes</button>
+          <button
+            class="button-style"
+            @click="vote(false)">No</button>
+        </div>
+      </div>
+      <transition
+        v-if="hasVoted"
         name="fade">
         <MSchoolsResult
           v-if="hasVoted"
@@ -14,25 +23,14 @@
           :active-outfit="activeOutfit"
         />
       </transition>
-      <div v-if="!hasVoted" >
-        <h2>Do you think the student should get dress coded?</h2>
-        <div class="row-flex center">
-          <button 
-            class="button-style" 
-            @click="vote(true)">Yes</button>
-          <button 
-            class="button-style" 
-            @click="vote(false)">No</button>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import MainComponent from "./components/MainComponent.vue";
-import MSchoolsHeader from "./components/MSchoolsHeader.vue";
-import MHeader from "./components/MHeader.vue";
+// import MainComponent from "./components/MainComponent.vue";
+// import MSchoolsHeader from "./components/MSchoolsHeader.vue";
+// import MHeader from "./components/MHeader.vue";
 import MOutfits from "./components/MOutfits.vue";
 import MSchoolsResult from "./components/MSchoolsResult.vue";
 import ResizeObserver from "resize-observer-polyfill";
@@ -40,9 +38,9 @@ import ResizeObserver from "resize-observer-polyfill";
 export default {
   name: "App",
   components: {
-    MainComponent,
-    MSchoolsHeader,
-    MHeader,
+    // MainComponent,
+    // MSchoolsHeader,
+    // MHeader,
     MOutfits,
     MSchoolsResult
   },
