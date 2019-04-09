@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row-flex-column margin-all">
-      <h2>Do you think the student should get dress coded?</h2>
+      <h2 class="title">Do you think the student should get dress coded?</h2>
       <MOutfits class="order" />
       <div v-if="!hasVoted" >
         <div class="row-flex center">
@@ -86,7 +86,6 @@ export default {
 <style lang="scss">
 @import "~@/styles/custom";
 @import "~@/styles/mixins";
-
 .margin-all{
   margin: auto;
   max-width: 100%;
@@ -149,8 +148,9 @@ export default {
   background-color: $sky-blue;
   box-shadow: 2px 2px $dark;
 }
-h2 {
+.title {
   text-align: center;
+  margin: 30px 0px 30px 0px;
 }
 
 .fade-enter-active {

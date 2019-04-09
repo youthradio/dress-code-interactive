@@ -1,10 +1,5 @@
 <template>
   <div>
-    <MTooltip
-      v-if="bShowTooltip"
-      :tooltip-data="tooltipData"
-      @closeTooltip="closeTooltip"
-    />
     <template v-if="!isLoading">
       <div class="container m-1">
         <header>
@@ -13,12 +8,17 @@
               You're <span class="right">right</span>
             </template>
             <template v-else>
-              You're wrong
+              You're <span class="wrong">wrong</span>
             </template>
             according to:
           </h2>
         </header>
-        <section>
+        <section :class="[voteOption?'right':'wrong']">
+          <MTooltip
+            v-if="bShowTooltip"
+            :tooltip-data="tooltipData"
+            @closeTooltip="closeTooltip"
+          />
           <ul>
             <li
               v-for="school in schoolsFail"
@@ -35,9 +35,7 @@
                   <h5>{{ school.info.level }}</h5>
                   <h5>{{ school.info.type }}</h5>
                   <h5>{{ school.info.location }}</h5>
-                  <h5><a
-                    @mouseover="showTooltip(school)"
-                  >see dress code</a></h5>
+                  <h5><a>see dress code</a></h5>
                 </div>
               </div>
             </li>
@@ -45,39 +43,44 @@
         </section>
         <header>
           <h2>
-            <template
-              v-if="!voteOption"
-            >You're right</template
-            >
-            <template
-              v-else
-            >You're wrong</template
-            >
+            <template v-if="!voteOption">
+              You're <span class="right">right</span>
+            </template>
+            <template v-else>
+              You're <span class="wrong">wrong</span>
+            </template>
             according to:
           </h2>
         </header>
-        <section>
+        <section :class="[voteOption?'wrong':'right']">
           <ul>
-            <li
-              v-for="school in schoolsPass"
-              :key="school.name"
-              @click="showTooltip(school)">
-              <div class="school-result">
-                <MSchool
-                  :school-data="school.info"
-                  class="school-logo-max"
-                />
-                <div>
-                  <h4>{{ school.name }}</h4>
-                  <h5>{{ school.info.level }}</h5>
-                  <h5>{{ school.info.type }}</h5>
-                  <h5>{{ school.info.location }}</h5>
-                  <h5><a
-                    @mouseover="showTooltip(school)"
-                  >see dress code</a></h5>
+            <template v-if="schoolsPass.length">
+              <li
+                v-for="school in schoolsPass"
+                :key="school.name"
+                @click="showTooltip(school)">
+                <div class="school-result">
+                  <MSchool
+                    :school-data="school.info"
+                    class="school-logo-max"
+                  />
+                  <div>
+                    <h4>{{ school.name }}</h4>
+                    <h5>{{ school.info.level }}</h5>
+                    <h5>{{ school.info.type }}</h5>
+                    <h5>{{ school.info.location }}</h5>
+                    <h5><a>see dress code</a></h5>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            </template>
+            <template v-else>
+              <li>
+                <div class="school-result">
+                  <h2> None </h2>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
       </div>
@@ -164,12 +167,17 @@ export default {
 @import "~@/styles/variables";
 @import "~@/styles/mixins";
 
+span {
+  vertical-align: baseline;
+  border-radius: 10px;
+  padding: 2px
+}
 .school-result {
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 20px;
   display: grid;
-  grid-template-columns: minmax(60px,1fr) 2fr;
+  grid-template-columns: minmax(60px,1fr) 3fr;
   align-items: center;
 }
 .school-logo-max {
@@ -181,6 +189,8 @@ export default {
 }
 section {
   grid-row: 2;
+  border-radius: 10px;
+  margin: 20px 5px 10px 5px;
 }
 header {
   grid-row: 1;
@@ -189,5 +199,11 @@ a {
   cursor: pointer;
   color: $sky-blue;
   text-decoration: underline;
+}
+.right {
+  background-color: lighten($green, 45%);
+}
+.wrong {
+  background-color: lighten($red, 25%);
 }
 </style>
