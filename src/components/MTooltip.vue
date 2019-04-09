@@ -5,6 +5,8 @@
     <template v-if="!isLoading">
       <section>
         <h2>Dress Code</h2>
+        <h3>{{ tooltipData.info.school_name }}</h3>
+
         <div v-html="getHTMLHighlights" />
       </section>
     </template>
@@ -58,7 +60,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "~@/styles/variables";
-
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
 .tooltip {
   top: 0;
   right: 0;
@@ -72,9 +77,13 @@ export default {
 
   z-index: 1000;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  // background-color: rgba(0, 0, 0, 0.5);
 }
 section {
+  box-shadow: 0px 5px 10px 10px rgba(100,100,100,0.5);
+  border-radius: 5px;
+  // border: 1px solid black;
+  margin: 30px;
   overflow-y: scroll;
   padding: 30px;
   font-weight: 600;
@@ -92,6 +101,7 @@ section {
   }
   /deep/ li {
     display: list-item;
+    margin-bottom: 5px;
   }
   /deep/ .highlight {
     font-weight: bolder;

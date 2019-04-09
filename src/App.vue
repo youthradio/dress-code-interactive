@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row-flex-column">
+    <div class="row-flex-column margin-all">
       <h2>Do you think the student should get dress coded?</h2>
       <MOutfits class="order" />
       <div v-if="!hasVoted" >
@@ -87,6 +87,16 @@ export default {
 @import "~@/styles/custom";
 @import "~@/styles/mixins";
 
+.margin-all{
+  margin: auto;
+  max-width: 100%;
+  @include breakpoint("small") {
+    max-width: 70%;
+  }
+  @include breakpoint("large") {
+    max-width: 50%;
+  }
+}
 .grid-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
