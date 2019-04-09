@@ -16,6 +16,7 @@
 
 <script>
 import CommonUtils from "../mixins/CommonUtils";
+import matchAll from 'string.prototype.matchall';
 
 export default {
   name: "MTooltip",
@@ -34,7 +35,10 @@ export default {
     getHTMLHighlights() {
       const html = this.tooltipData.info.dress_code_html;
       const result = this.tooltipData.result // clean strings to match on regex
-      const tags = Array.from(result.matchAll(/{([^}]+)\}/g)); // match all contetnt between {}
+      if(result === "pass"){
+        return html;
+      }
+      const tags = Array.from(matchAll(result, /{([^}]+)\}/g)); // match all contetnt between {}
       const regex = tags.map(e => e[1]).join("|");
       const regexEscaped =  regex.replace(/[-\/\\^$*+?.()[\]{}]/g, '\\$&'); //scape all caracters
       const rg = new RegExp(regexEscaped,"gi");
