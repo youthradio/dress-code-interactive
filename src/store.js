@@ -17,14 +17,14 @@ const mutations = {
   async INTERACTIVE_DATA(state) {
     state.isLoading = true;
     [state.schoolsData, state.reviewsData] = await Promise.all([
-      fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTy3HEVamqbvXAQ4GHfZY7SsmON6SctUgjExUyWBVtJx-G_Y_UMW53WSeWgeIaLhqdXnhmkowJAzJKl/pub?gid=1085188448&single=true&output=csv")
+      fetch("schools.csv")
         .then(res => res.text())
         .then(res => csvParse(res))
         .then(data => {
           delete data.columns;
           return data.sort(() => 0.5 - Math.random());
         }),
-      fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTy3HEVamqbvXAQ4GHfZY7SsmON6SctUgjExUyWBVtJx-G_Y_UMW53WSeWgeIaLhqdXnhmkowJAzJKl/pub?gid=0&single=true&output=csv")
+      fetch("outfits.csv")
         .then(res => res.text())
         .then(res =>
           csvParse(res, row => {
@@ -45,7 +45,7 @@ const mutations = {
         .then(data => {
           delete data.columns;
           return data.sort(() => 0.5 - Math.random());
-        })
+          })
     ]);
     state.isLoading = false;
   }
