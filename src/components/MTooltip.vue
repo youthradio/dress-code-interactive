@@ -34,11 +34,10 @@ export default {
     getHTMLHighlights() {
       const html = this.tooltipData.info.dress_code_html;
       const result = this.tooltipData.result // clean strings to match on regex
-        .replace(/\n/g, "")
-        .split("\"")
-        .filter(e => e)
-        .join("|");
-       const rg = new RegExp(result,"gi");
+      const tags = Array.from(result.matchAll(/{([^}]+)\}/g)); // match all contetnt between {}
+      const regex = tags.map(e => e[1]).join("|");
+      const regexEscaped =  regex.replace(/[-\/\\^$*+?.()[\]{}]/g, '\\$&'); //scape all caracters
+      const rg = new RegExp(regexEscaped,"gi");
       return html.replace(rg, "<span class=\"highlight\">$&</span>"); // find and replace with higlights
     }
   },

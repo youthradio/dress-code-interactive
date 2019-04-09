@@ -44,7 +44,7 @@ const mutations = {
         )
         .then(data => {
           delete data.columns;
-          return data;
+          return data.sort(() => 0.5 - Math.random());
         })
     ]);
     state.isLoading = false;
