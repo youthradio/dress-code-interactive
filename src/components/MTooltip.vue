@@ -4,23 +4,23 @@
       <section>
         <header>
           <span
-            @click.prevent="$emit('closeTooltip')"
-            class="icon-arrow-left arrow arrow-size" />
+            class="icon-arrow-left arrow arrow-size"
+            @click.prevent="$emit('closeTooltip')" />
 
           <h2>
             <a
-              target="_blank"
               :href="tooltipData.info.dress_code_url"
               :title="`Dress code URL: ${tooltipData.info.dress_code_url} `"
+              target="_blank"
             >
               Dress Code
             </a>
           </h2>
           <h3>
             <a
-              target="_blank"
               :href="tooltipData.info.schools_url"
               :title="`Scholl website: ${tooltipData.info.schools_url}`"
+              target="_blank"
             >
               {{ tooltipData.info.school_name }}
             </a>
@@ -65,7 +65,7 @@ export default {
       }
       const tags = Array.from(matchAll(result, /{([^}]+)\}/g)); // match all contetnt between {}
       const regex = tags.map(e => e[1]).join("|");
-      const regexEscaped = regex.replace(/[-\/\\^$*+?.()[\]{}]/g, "\\$&"); //scape all caracters
+      const regexEscaped = regex.replace(/[-/\\^$*+?.()[\]{}]/g, "\\$&"); //scape all caracters
       const rg = new RegExp(regexEscaped, "gi");
       return html.replace(rg, '<span class="highlight">$&</span>'); // find and replace with higlights
     }
