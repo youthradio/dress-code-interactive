@@ -22,7 +22,7 @@ const mutations = {
         .then(res => csvParse(res))
         .then(data => {
           delete data.columns;
-          return data.sort(() => 0.5 - Math.random());
+          return data;
         }),
       fetch("outfits.csv")
         .then(res => res.text())
@@ -44,7 +44,7 @@ const mutations = {
         )
         .then(data => {
           delete data.columns;
-          return data.sort(() => 0.5 - Math.random());
+          return data;
           })
     ]);
     state.isLoading = false;

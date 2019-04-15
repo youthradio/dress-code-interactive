@@ -3,19 +3,13 @@
     <div class="row-flex-column margin-all">
       <h2 class="title">Do you think the student should get dress coded?</h2>
       <MOutfits class="order" />
-      <div v-if="!hasVoted" >
+      <div v-if="!hasVoted">
         <div class="row-flex center">
-          <button
-            class="button-style"
-            @click="vote(true)">Yes</button>
-          <button
-            class="button-style"
-            @click="vote(false)">No</button>
+          <button class="button-style" @click="vote(true)">Yes</button>
+          <button class="button-style" @click="vote(false)">No</button>
         </div>
       </div>
-      <transition
-        v-if="hasVoted"
-        name="fade">
+      <transition v-if="hasVoted" name="fade">
         <MSchoolsResult
           v-if="hasVoted"
           ref="resultbox"
@@ -34,6 +28,7 @@
 import MOutfits from "./components/MOutfits.vue";
 import MSchoolsResult from "./components/MSchoolsResult.vue";
 import ResizeObserver from "resize-observer-polyfill";
+import ga from "./analytics.js";
 
 export default {
   name: "App",
@@ -69,6 +64,13 @@ export default {
     resizeObserver.observe(elementRoot);
     //clean has voted state with outfitchange
     this.$root.$on("activeOutfit", this.resetView);
+
+    ga.send("pageview", {
+      an: "Dress Code Interactive", // application name
+      ec: "Interactive", // event category
+      dt: "Dress Code Interactive",
+      dp: "/dress-code-interactive"
+    });
   },
   methods: {
     resetView({ index }) {
@@ -77,6 +79,13 @@ export default {
     },
     vote(option) {
       this.voteOption = option;
+      ga.send("event", {
+        an: "Dress Code Interactive", // application name
+        ec: "Interactive", // event category
+        ev: Number(option + 1), // event value
+        el: `${option ? "Yes" : "No"} - ${this.activeOutfit}`, // event label
+        ea: "vote" // event action,
+      });
       this.hasVoted = true;
     }
   }
@@ -86,7 +95,7 @@ export default {
 <style lang="scss">
 @import "~@/styles/custom";
 @import "~@/styles/mixins";
-.margin-all{
+.margin-all {
   margin: auto;
   max-width: 100%;
   @include breakpoint("small") {
