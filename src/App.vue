@@ -5,11 +5,17 @@
       <MOutfits class="order" />
       <div v-if="!hasVoted">
         <div class="row-flex center">
-          <button class="button-style" @click="vote(true)">Yes</button>
-          <button class="button-style" @click="vote(false)">No</button>
+          <button 
+            class="button-style" 
+            @click="vote(true)">Yes</button>
+          <button 
+            class="button-style" 
+            @click="vote(false)">No</button>
         </div>
       </div>
-      <transition v-if="hasVoted" name="fade">
+      <transition 
+        v-if="hasVoted" 
+        name="fade">
         <MSchoolsResult
           v-if="hasVoted"
           ref="resultbox"
