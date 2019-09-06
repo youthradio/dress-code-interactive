@@ -13,6 +13,7 @@
           v-model="activeOutfit"
           focus-at="center"
           type="carousel"
+          class="max-width"
         >
           <vue-glide-slide
             v-for="(review, ind) in reviewsData"
@@ -20,7 +21,10 @@
           >
             <div class="outfit-img">
               <img
-                :class="[activeOutfit === ind ? 'selected' : 'not-selected']"
+                class="img-absolute"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAAJYCAYAAADc9lwrAAAGRElEQVR4nO3SMQEAIAzAMMC/5yFjRxMFPXpnZg7EvO0A2GB8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CQZnyTjk2R8koxPkvFJMj5JxifJ+CR9UWIIrM76scAAAAAASUVORK5CYII=">
+              <img
+                :class="[activeOutfit === ind ? 'selected' : 'not-selected','img-fluid']"
                 :src="require(`../assets/${review.outfit.outfit_photo_path}`)"
               >
             </div>
@@ -145,20 +149,37 @@ export default {
 .outfit-img {
   display: flex;
   position: relative;
-  // overflow: hidden;
-  // border-radius: 50%;
-  // box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  img {
-    filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.5));
-    // display: inline;
-    margin: 0 auto;
-    height: 100%;
-    width: auto;
-    max-height: 300px;
-    @include breakpoint("small") {
-      max-height: 400px;
-    }
+}
+.img-absolute{
+  visibility: hidden;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+  max-height: 300px;
+  @include breakpoint("small") {
+    max-height: 400px;
   }
 }
+.img-fluid {
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.5));
+  // display: inline;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 100%;
+  width: auto;
+  max-height: 300px;
+  @include breakpoint("small") {
+    max-height: 400px;
+  }
+
+}
+.max-width{ 
+  max-width: 100vw;
+}
+
 </style>
